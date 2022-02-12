@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "541721000228",
+    "project_id": "whereru-fd566",
+    "storage_bucket": "whereru-fd566.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541721000228:android:37c091ad2ce3091df89bb1",
+        "android_client_info": {
+          "package_name": "com.example.whereru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541721000228-0lffmmb2atmh91ngtfgdegs517h68r7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCinnAj7Scb3qFlbWjo4UERFfr8dQrqcyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541721000228-0lffmmb2atmh91ngtfgdegs517h68r7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
