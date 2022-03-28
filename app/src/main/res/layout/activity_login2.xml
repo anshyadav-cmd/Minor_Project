@@ -78,10 +78,10 @@
         android:text="Don't have a Account? "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.324"
+        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton_id"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintVertical_bias="0.77" />
 
     <TextView
         android:id="@+id/signUptext_id"
