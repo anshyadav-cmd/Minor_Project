@@ -2,11 +2,15 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="View Route" />
     <item
-        android:id="@+id/Buse"
+        android:id="@+id/viewRouteMenuItem"
+        android:title="View Route" />
+    <item
+        android:id="@+id/trackBusMenuItem"
         android:title="Track bus" />
-    <item android:title="View Profile" />
+    <item
+        android:id="@+id/viewProfileMenuItem"
+        android:title="View Profile" />
     <item
         android:id="@+id/logoutMenuItem"
         android:title="Log Out"

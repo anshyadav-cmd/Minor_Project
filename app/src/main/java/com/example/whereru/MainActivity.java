@@ -1,5 +1,6 @@
 package com.example.whereru;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,17 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
     public void logout (View view) {
         FirebaseAuth.getInstance().signOut();
@@ -34,10 +35,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.logoutMenuItem){
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getApplicationContext(), Login.class));
-            finish();
+            AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this)
+                    .setTitle("You sure, you wanna Logout")
+                    .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // nothing here
+                        }
+                    });
+            logoutAlert.show();
         }
-        return true;
+        if(item.getItemId() == R.id.viewRouteMenuItem){
+            startActivity(new Intent(this, ViewBusActivity.class));
+        }
+        if(item.getItemId() == R.id.trackBusMenuItem){
+            startActivity(new Intent(this, TrackBusActivity.class));
+        }
+        if(item.getItemId() == R.id.viewProfileMenuItem){
+            startActivity(new Intent(this, ViewProfileActivity.class));
+        }
+            return true;
     }
 }

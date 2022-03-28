@@ -10,5 +10,6 @@ public class TrackBusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_bus);
+        setTitle("Track Bus");
     }
 }

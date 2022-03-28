@@ -10,5 +10,6 @@ public class ViewBusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_bus);
+        setTitle("View Route");
     }
 }
