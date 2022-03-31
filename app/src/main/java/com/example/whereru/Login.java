@@ -40,6 +40,11 @@ public class Login extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.loginButton_id);
         mforgotPassword = findViewById(R.id.forgotPasswordText_id);
 
+        if (fAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+
         mPassword.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -107,6 +112,10 @@ public class Login extends AppCompatActivity {
     }
 
     private void loginClick() {
+        if(TextUtils.isEmpty(mPassword.getText().toString())){
+            mPassword.setError("Enter password");
+            return;
+        }
         String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
 
