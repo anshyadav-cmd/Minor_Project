@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.arasthel.asyncjob.AsyncJob;
 import com.example.whereru.controller.BusDataAdapter;
@@ -23,15 +25,13 @@ public class ViewBusActivity extends AppCompatActivity {
 
     private List<Bus> mAllBuses = new ArrayList<>();
     private BusDataAdapter mBusAdapter;
+    private RecyclerView busRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_bus);
         setTitle("View Route");
-
-        // Instatiating and Initializing
-        mBusAdapter = new BusDataAdapter();
 
         new AsyncJob.AsyncJobBuilder<Boolean>()
                 .doInBackground(new AsyncJob.AsyncAction<Boolean>() {
@@ -58,9 +58,10 @@ public class ViewBusActivity extends AppCompatActivity {
                     @Override
                     public void onResult(Object o) {
         //                printBusList();
-                        for(Bus bus : mAllBuses) {
-
-                        }
+//                        mBusAdapter = new BusDataAdapter(mAllBuses, ViewBusActivity.this);
+                        busRecyclerView = findViewById(R.id.busRV);
+                        busRecyclerView.setAdapter(new BusDataAdapter(mAllBuses, ViewBusActivity.this));
+                        busRecyclerView.setLayoutManager(new LinearLayoutManager(ViewBusActivity.this));
                     }
                 })
                 .create()
