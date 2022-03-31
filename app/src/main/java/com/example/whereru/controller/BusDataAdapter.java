@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.whereru.view.BusItemViewHolder;
 
 public class BusDataAdapter extends RecyclerView.Adapter<BusItemViewHolder> {
+
+    
+
     @NonNull
     @Override
     public BusItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

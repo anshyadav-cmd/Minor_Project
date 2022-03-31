@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.arasthel.asyncjob.AsyncJob;
+import com.example.whereru.controller.BusDataAdapter;
 import com.example.whereru.model.Bus;
 import com.example.whereru.model.BusStop;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class ViewBusActivity extends AppCompatActivity {
 
     private List<Bus> mAllBuses = new ArrayList<>();
+    private BusDataAdapter mBusAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +30,51 @@ public class ViewBusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_bus);
         setTitle("View Route");
 
+        // Instatiating and Initializing
+        mBusAdapter = new BusDataAdapter();
+
         new AsyncJob.AsyncJobBuilder<Boolean>()
                 .doInBackground(new AsyncJob.AsyncAction<Boolean>() {
                     @Override
                     public Boolean doAsync() {
                         try {
                             JSONObject rootJSONObject = new JSONObject(loadJsonFromAssets());
-                            Log.i("Tag", rootJSONObject.toString());
+
                             JSONObject bus = rootJSONObject.getJSONObject("bus_no_1");
                             JSONArray busStop = bus.getJSONArray("stops");
-
                             addBusesToArrayList(bus, busStop, mAllBuses);
+
+                            bus = rootJSONObject.getJSONObject("bus_no_2");
+                            busStop = bus.getJSONArray("stops");
+                            addBusesToArrayList(bus, busStop, mAllBuses);
+
+
                         }catch (JSONException e) {
                             e.printStackTrace();
                         }
                         return true;
                     }
-                });
+                }).doWhenFinished(new AsyncJob.AsyncResultAction() {
+                    @Override
+                    public void onResult(Object o) {
+        //                printBusList();
+                        for(Bus bus : mAllBuses) {
+
+                        }
+                    }
+                })
+                .create()
+                .start();
     }
 
     // testing for data input
     private void printBusList() {
-
+        for(Bus bus : mAllBuses) {
+            Log.i("Tag", bus.getBusDriverName()+"");
+            Log.i("Tag", bus.getBusDriverPhone()+"");
+            Log.i("Tag", bus.getBusNumber() + "");
+            Log.i("Tag", bus.getStopList()+"");
+        }
     }
 
     //adding data to arrayList of bus
