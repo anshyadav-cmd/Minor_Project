@@ -1,5 +1,6 @@
 package com.example.whereru.controller;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class StopsDataAdapter extends RecyclerView.Adapter<BusStopViewHolder> {
 
     @Override
     public int getItemCount() {
+        Log.i("size", mBus.getStopList().size()+"");
         return mBus.getStopList().size();
     }
 }

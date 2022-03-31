@@ -60,7 +60,7 @@ public class ViewBusActivity extends AppCompatActivity implements BusDataAdapter
                 }).doWhenFinished(new AsyncJob.AsyncResultAction() {
                     @Override
                     public void onResult(Object o) {
-        //                printBusList();
+                        printBusList();
 //                        mBusAdapter = new BusDataAdapter(mAllBuses, ViewBusActivity.this);
                         busRecyclerView = findViewById(R.id.busRV);
                         busRecyclerView.setAdapter(new BusDataAdapter(mAllBuses, ViewBusActivity.this));
