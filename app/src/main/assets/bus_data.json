@@ -1,20 +1,130 @@
 {
-  "bus_no_1" : {
-    "bus_no" : "1",
-    "driver" : "Santosh",
-    "phone_no" : "1234567890",
-    "stops" : [
-      {"address" : "annpurna", "time" :  "12:1:21"},
-      {"address" : "cdgi", "time" :  "12:10 pm"}
+  "bus_no_1": {
+    "bus_no": "1",
+    "driver": "Santosh Verma",
+    "BUS_RTO_NO": "MP 09 FA 1647",
+    "phone_no": "9541237851",
+    "stops": [
+      {
+        "address": "Paliya",
+        "time": "06:25:00 AM"
+      },
+      {
+        "address": "Hatod",
+        "time": "06:32:00 AM"
+      },
+      {
+        "address": "Ghandi Nagar",
+        "time": "06:45:00 AM"
+      },
+      {
+        "address": "Sakshi Nagar",
+        "time": "12:50:00 AM"
+      },
+      {
+        "address": "Ramchandra Nagar (Petrol Pump)",
+        "time": "12:58:00 AM"
+      },
+      {
+        "address": "CDGI",
+        "time": "09:45:00 AM"
+      }
     ]
   },
-  "bus_no_2" : {
-    "bus_no" : "2",
-    "driver" : "Mannu ",
-    "phone_no" : "0987654321",
-    "stops" : [
-      {"address" : "rajwada", "time" :  "12:1:21"},
-      {"address" : "cdgi", "time" :  "12:10 pm"}
+  "bus_no_2": {
+    "bus_no": "2",
+    "driver": "Shiva joshi",
+    "BUS_RTO_NO": "MP 09 FA 2994",
+    "phone_no": "9897456321",
+    "stops": [
+      {
+        "address": "Indorama",
+        "time": "06:20:00 AM"
+      },
+      {
+        "address": "Pithampur(Eicher Square)",
+        "time": "06:40:00 AM"
+      },
+      {
+        "address": "Pithampur Bus Stand",
+        "time": "06:42:00 AM"
+      },
+      {
+        "address": "Chatra Chaya(Main Road)",
+        "time": "06:43:00 AM"
+      },
+      {
+        "address": "Housing Square(MAin Road)",
+        "time": "06:44:00 AM"
+      },
+      {
+        "address": "CDGI",
+        "time": "07:45:00AM"
+      }
+    ]
+  },
+  "bus_no_3": {
+    "bus_no": "3",
+    "driver": "Madan Lal",
+    "BUS_RTO_NO": "MP 09 FA 0443",
+    "phone_no": "9698745103",
+    "stops": [
+      {
+        "address": "Palda",
+        "time": "06:55:00 AM"
+      },
+      {
+        "address": "Chita Vadh",
+        "time": "07:00:00 AM"
+      },
+      {
+        "address": "Agrasen Square",
+        "time": "07:05:00 AM"
+      },
+      {
+        "address": "Sapna Sangita",
+        "time": "07:10:00 AM"
+      },
+      {
+        "address": "ICICI Bank",
+        "time": "07:15:00 AM"
+      },
+      {
+        "address": "CDGI",
+        "time": "07:45:00 AM"
+      }
+    ]
+  },
+  "bus_no_4": {
+    "bus_no": "4",
+    "driver": "Pintu Chouhan",
+    "BUS_RTO_NO": "MP 09 FA 0179",
+    "phone_no": "9586748125",
+    "stops": [
+      {
+        "address": "Joshi Clinic(Silicon City)",
+        "time": "07:00:00 AM"
+      },
+      {
+        "address": "Club House",
+        "time": "07:05:00 AM"
+      },
+      {
+        "address": "Rau Muktidham",
+        "time": "07:15:00 AM"
+      },
+      {
+        "address": "Rau Square ByPass",
+        "time": "07:20:00 AM"
+      },
+      {
+        "address": "Rangwasa Petrol Pump",
+        "time": "07:30:00 AM"
+      },
+      {
+        "address": "CDGI",
+        "time": "07:45:00 AM"
+      }
     ]
   }
 }

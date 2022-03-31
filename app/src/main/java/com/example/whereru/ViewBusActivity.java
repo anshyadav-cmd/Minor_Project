@@ -51,9 +51,17 @@ public class ViewBusActivity extends AppCompatActivity implements BusDataAdapter
                             busStop = bus.getJSONArray("stops");
                             addBusesToArrayList(bus, busStop, mAllBuses);
 
+                            bus = rootJSONObject.getJSONObject("bus_no_3");
+                            busStop = bus.getJSONArray("stops");
+                            addBusesToArrayList(bus, busStop, mAllBuses);
+
+                            bus = rootJSONObject.getJSONObject("bus_no_4");
+                            busStop = bus.getJSONArray("stops");
+                            addBusesToArrayList(bus, busStop, mAllBuses);
+
 
                         }catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.i("Tag", e.toString());
                         }
                         return true;
                     }
