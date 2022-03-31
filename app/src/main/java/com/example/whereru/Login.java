@@ -58,6 +58,7 @@ public class Login extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
                         }else {
                             Toast.makeText(Login.this , "Loggin Failed "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             mPassword.setError("Invalid Password");

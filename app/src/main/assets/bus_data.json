@@ -1,0 +1,20 @@
+{
+  "bus_no_1" : {
+    "bus_no" : "1",
+    "driver" : "Santosh",
+    "phone_no" : "1234567890",
+    "stops" : [
+      {"address" : "annpurna", "time" :  "12:1:21"},
+      {"address" : "cdgi", "time" :  "12:10 pm"}
+    ]
+  },
+  "bus_no_2" : {
+    "bus_no" : "2",
+    "driver" : "Mannu ",
+    "phone_no" : "0987654321",
+    "stops" : [
+      {"address" : "rajwada", "time" :  "12:1:21"},
+      {"address" : "cdgi", "time" :  "12:10 pm"}
+    ]
+  }
+}

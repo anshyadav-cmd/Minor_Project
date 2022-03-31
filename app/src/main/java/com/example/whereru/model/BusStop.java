@@ -1,24 +1,24 @@
 package com.example.whereru.model;
 
 public class BusStop {
-    private String mDate;
+    private String mTime;
     private String address;
 
-    public BusStop(String date, String address) {
-        mDate = date;
+    public BusStop(String time, String address) {
+        mTime = time;
         this.address = address;
     }
 
-    public String getDate() {
-        return mDate;
+    public String getTime() {
+        return mTime;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setDate(String date) {
-        mDate = date;
+    public void setTime(String time) {
+        mTime = time;
     }
 
     public void setAddress(String address) {

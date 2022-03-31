@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.logoutMenuItem){
             AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this)
-                    .setTitle("You sure, you wanna Logout")
+                    .setTitle("Are you sure you want to Logout?")
                     .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -45,12 +45,7 @@ public class MainActivity extends AppCompatActivity  {
                             finish();
                         }
                     })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // nothing here
-                        }
-                    });
+                    .setNegativeButton("No", null);
             logoutAlert.show();
         }
         if(item.getItemId() == R.id.viewRouteMenuItem){
