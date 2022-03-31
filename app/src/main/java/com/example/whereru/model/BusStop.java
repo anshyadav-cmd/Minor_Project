@@ -1,10 +1,12 @@
 package com.example.whereru.model;
 
-public class BusStop {
+import java.io.Serializable;
+
+public class BusStop implements Serializable {
     private String mTime;
     private String address;
 
-    public BusStop(String time, String address) {
+    public BusStop(String time, String address){
         mTime = time;
         this.address = address;
     }

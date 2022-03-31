@@ -1,6 +1,5 @@
 package com.example.whereru.controller;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,16 @@ import java.util.List;
 public class BusDataAdapter extends RecyclerView.Adapter<BusItemViewHolder> {
 
     private List<Bus> mBuses;
-    private Context mContext;
 
-    public BusDataAdapter(List<Bus> busList, Context context) {
+    public interface OnBusClicked {
+        void busIsClicked(Bus bus);
+    }
+
+    private  OnBusClicked mOnBusClicked;
+
+    public BusDataAdapter(List<Bus> busList, OnBusClicked busClicked) {
         mBuses = busList;
-        mContext = context;
+        mOnBusClicked = busClicked;
     }
 
     @NonNull
@@ -42,6 +46,13 @@ public class BusDataAdapter extends RecyclerView.Adapter<BusItemViewHolder> {
         holder.getBusNumberTextView().setText(busNumber);
         holder.getDriverNameTextView().setText(busDriverName);
         holder.getDriverPhoneTextView().setText(busDriverPhone);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnBusClicked.busIsClicked(mBuses.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.whereru;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -21,11 +22,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewBusActivity extends AppCompatActivity {
+public class ViewBusActivity extends AppCompatActivity implements BusDataAdapter.OnBusClicked {
 
     private List<Bus> mAllBuses = new ArrayList<>();
     private BusDataAdapter mBusAdapter;
     private RecyclerView busRecyclerView;
+
+    public static final String BUS_OBJECT_KEY = "bus_object_key19910";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,5 +113,16 @@ public class ViewBusActivity extends AppCompatActivity {
             return null;
         }
         return json;
+    }
+
+    @Override
+    public void busIsClicked(Bus bus) {
+        displayStops(bus);
+    }
+
+    private void displayStops(Bus bus) {
+        Intent stopsItemIntent = new Intent(this, BusStopActivity.class);
+        stopsItemIntent.putExtra(BUS_OBJECT_KEY, bus);
+        startActivity(stopsItemIntent);
     }
 }

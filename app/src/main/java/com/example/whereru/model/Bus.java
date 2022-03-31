@@ -1,9 +1,10 @@
 package com.example.whereru.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bus {
+public class Bus implements Serializable {
 
     private int busNumber ;
     private String busDriverName;
@@ -21,16 +22,8 @@ public class Bus {
         return busNumber;
     }
 
-    public void setBusNumber(int busNumber) {
-        this.busNumber = busNumber;
-    }
-
     public String getBusDriverName() {
         return busDriverName;
-    }
-
-    public void setBusDriverName(String busDriverName) {
-        this.busDriverName = busDriverName;
     }
 
     public String getBusDriverPhone() {
@@ -41,11 +34,5 @@ public class Bus {
         return mStopList;
     }
 
-    public void setStopList(List<BusStop> stopList) {
-        mStopList = stopList;
-    }
 
-    public void setBusDriverPhone(String busDriverPhone) {
-        this.busDriverPhone = busDriverPhone;
-    }
 }
