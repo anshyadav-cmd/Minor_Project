@@ -4,7 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,33 +40,22 @@ public class Login extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.loginButton_id);
         mforgotPassword = findViewById(R.id.forgotPasswordText_id);
 
+        mPassword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
+                    loginClick();
+                    hideKeybaord(v);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
-
-                if(TextUtils.isEmpty(email)) {
-                    mEmail.setError("Email is required");
-                    return ;
-                }
-                if(TextUtils.isEmpty(password)) {
-                    mPassword.setError("Password is required");
-                }
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
-                        }else {
-                            Toast.makeText(Login.this , "Loggin Failed "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            mPassword.setError("Invalid Password");
-                        }
-                    }
-                });
+                loginClick();
             }
         });
 
@@ -107,9 +98,43 @@ public class Login extends AppCompatActivity {
                 passwordResetDailong.create().show();
             }
         });
+
+
     }
+
     public void toSignUpPage(View view) {
         startActivity(new Intent(getApplicationContext(), Registration.class));
+    }
+
+    private void loginClick() {
+        String email = mEmail.getText().toString().trim();
+        String password = mPassword.getText().toString().trim();
+
+        if(TextUtils.isEmpty(email)) {
+            mEmail.setError("Email is required");
+            return ;
+        }
+        if(TextUtils.isEmpty(password)) {
+            mPassword.setError("Password is required");
+        }
+        fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }else {
+                    Toast.makeText(Login.this , "Loggin Failed "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    mPassword.setError("Invalid Password");
+                }
+            }
+        });
+    }
+
+    private void hideKeybaord(View v) {
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
     }
 
 }
