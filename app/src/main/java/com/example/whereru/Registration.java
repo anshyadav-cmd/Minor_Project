@@ -47,6 +47,7 @@ public class Registration extends AppCompatActivity {
         mRegisterBtm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
 
@@ -71,6 +72,15 @@ public class Registration extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                            DBUsers dbUsers = new DBUsers();
+                            User user = new User(mFullName.getText().toString(), email, mPhone.getText().toString(), fAuth.getUid());
+                            dbUsers.add(user).addOnSuccessListener(sucess -> {
+                                Toast.makeText( Registration.this, "Db success", Toast.LENGTH_LONG).show();
+                            }).addOnFailureListener(failer -> {
+                                Toast.makeText( Registration.this, "Db FAILED", Toast.LENGTH_LONG).show();
+                            });
+
                             finish();
                         } else {
                             Toast.makeText(Registration.this, "Error !! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
