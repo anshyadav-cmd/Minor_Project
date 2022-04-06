@@ -18,5 +18,4 @@ public class DBUsers {
         return  mReference.child(user.getUserID()).setValue(user);
     }
 
-
 }
