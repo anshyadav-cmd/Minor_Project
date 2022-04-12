@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 
 public class Login extends AppCompatActivity {
 
@@ -131,12 +133,23 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     DBUsers dbUsers = new DBUsers();
-                    if(dbUsers.isDriver(fAuth.getUid())){
-                        Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), ));
-                    }
-                    Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    dbUsers.mReference.child(fAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    Log.i("DATA RE", task.getResult().getValue().toString());
+                                    if(task.getResult().child("driver").getValue(Boolean.class)) {
+                                        Toast.makeText(Login.this, "Looged in Driver Successully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
+                                    }else{
+                                        Toast.makeText(Login.this, "Looged in User Successully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    }
+                                } else {
+                                    Log.i("DATA RE", "data re failed");
+                                }
+                            }
+                        });
                     finish();
                 }else {
                     Toast.makeText(Login.this , "Loggin Failed "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();

@@ -3,6 +3,7 @@ package com.example.whereru;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 
 public class Registration extends AppCompatActivity {
     EditText mFullName, mEmail, mPassword, mPhone;
@@ -44,7 +46,24 @@ public class Registration extends AppCompatActivity {
 
 //         auto login
         if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            DBUsers dbUsers = new DBUsers();
+            dbUsers.mReference.child(fAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        Log.i("DATA RE", task.getResult().getValue().toString());
+                        if(task.getResult().child("driver").getValue(Boolean.class)) {
+                            Toast.makeText(Registration.this, "Looged in Driver Successully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
+                        }else{
+                            Toast.makeText(Registration.this, "Looged in User Successully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }
+                    } else {
+                        Log.i("DATA RE", "data re failed");
+                    }
+                }
+            });
             finish();
         }
 

@@ -16,7 +16,9 @@ public class User {
         this.userID = userID;
         this.isDriver = isDriver;
     }
-
+    public User() {
+        // require empty constructor
+    }
     public String getUserID() {
         return userID;
     }
