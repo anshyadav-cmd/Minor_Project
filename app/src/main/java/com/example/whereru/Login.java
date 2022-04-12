@@ -130,6 +130,11 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+                    DBUsers dbUsers = new DBUsers();
+                    if(dbUsers.isDriver(fAuth.getUid())){
+                        Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), ));
+                    }
                     Toast.makeText(Login.this, "Looged in Successully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();

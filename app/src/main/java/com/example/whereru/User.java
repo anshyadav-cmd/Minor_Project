@@ -1,16 +1,20 @@
 package com.example.whereru;
 
+import androidx.annotation.NonNull;
+
 public class User {
     private String userID;
     private String name;
     private String email;
     private String phone;
+    private boolean isDriver;
 
-    public User(String name, String email, String phone, String userID) {
+    public User(String name, String email, String phone, String userID, boolean isDriver) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.userID = userID;
+        this.isDriver = isDriver;
     }
 
     public String getUserID() {
@@ -43,5 +47,18 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean isDriver() {
+        return isDriver;
+    }
+    public void setDriver(boolean driver) {
+        isDriver = driver;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return  userID + " " + name + " " + isDriver ;
     }
 }

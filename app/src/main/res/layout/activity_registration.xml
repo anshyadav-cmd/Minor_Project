@@ -134,5 +134,21 @@
         app:layout_constraintVertical_bias="0.19999999"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <Switch
+        android:id="@+id/switchDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:text="Driver"
+        android:textColor="#FAF9F9"
+        android:textColorLink="#FFEB3B"
+        android:trackTint="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/rregisterButton_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rpasswordText_id"
+        app:layout_constraintVertical_bias="0.529" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

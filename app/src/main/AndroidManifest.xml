@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhereRU">
         <activity
+            android:name=".DriverMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".BusStopActivity"
             android:exported="false" />
         <!--
@@ -29,15 +32,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAYdCV9XbndJ4ghU3UehjGZkdYHlnrSTQY" />
 
-        <activity android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="true">
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MapsActivity"
             android:exported="false"
@@ -53,11 +57,10 @@
             android:exported="false" />
         <activity
             android:name=".Registration"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Login"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />

@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +21,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Registration extends AppCompatActivity {
     EditText mFullName, mEmail, mPassword, mPhone;
     Button mRegisterBtm;
+
     TextView mLoginBtn;
     FirebaseAuth fAuth;
+    Switch driverSwitch;
 
 
     @Override
@@ -35,6 +38,7 @@ public class Registration extends AppCompatActivity {
         mPhone = findViewById(R.id.rphoneText_id);
         mRegisterBtm = findViewById(R.id.rregisterButton_id);
         mLoginBtn = findViewById(R.id.ralreadyLoginText_id);
+        driverSwitch = findViewById(R.id.switchDriver);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -50,6 +54,7 @@ public class Registration extends AppCompatActivity {
 
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
+                boolean isDriver = driverSwitch.isChecked();
 
                 if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email is required.");
@@ -74,7 +79,7 @@ public class Registration extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                             DBUsers dbUsers = new DBUsers();
-                            User user = new User(mFullName.getText().toString(), email, mPhone.getText().toString(), fAuth.getUid());
+                            User user = new User(mFullName.getText().toString(), email, mPhone.getText().toString(), fAuth.getUid(), isDriver);
                             dbUsers.add(user).addOnSuccessListener(sucess -> {
                                 Toast.makeText( Registration.this, "Db success", Toast.LENGTH_LONG).show();
                             }).addOnFailureListener(failer -> {
