@@ -15,11 +15,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity  {
 
+    private MapsFragment mMapsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMapsFragment = (MapsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
     }
     public void logout (View view) {
         FirebaseAuth.getInstance().signOut();
