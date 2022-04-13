@@ -111,6 +111,7 @@ public class Login extends AppCompatActivity {
 
     public void toSignUpPage(View view) {
         startActivity(new Intent(getApplicationContext(), Registration.class));
+        finish();
     }
 
     private void loginClick() {
