@@ -13,12 +13,16 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class DriverMainActivity extends AppCompatActivity {
     private Button logoutBtn;
+    private Button profileBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_main);
 
         logoutBtn = findViewById(R.id.btnLogout);
+        profileBtn = findViewById(R.id.driverProfileBtn);
+
     }
 
     @Override
@@ -42,5 +46,10 @@ public class DriverMainActivity extends AppCompatActivity {
                 logoutAlert.show();
             }
         });
+
+        profileBtn.setOnClickListener(view -> {
+            startActivity(new Intent(this, ViewProfileActivity.class));
+        });
     }
+
 }
