@@ -52,7 +52,7 @@ public class Registration extends AppCompatActivity {
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     if (task.isSuccessful()) {
                         Log.i("DATA RE", task.getResult().getValue().toString());
-                        if(task.getResult().child("driver").getValue(Boolean.class)) {
+                        if(task.getResult().child("driver").getValue(Boolean.class) == true) {
                             Toast.makeText(Registration.this, "Looged in Driver Successully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
                         }else{
@@ -94,8 +94,13 @@ public class Registration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            if(isDriver) {
+                                Toast.makeText(Registration.this, "Driver Created", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
+                            }else {
+                                Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
 
                             DBUsers dbUsers = new DBUsers();
                             User user = new User(mFullName.getText().toString(), email, mPhone.getText().toString(), fAuth.getUid(), isDriver);
