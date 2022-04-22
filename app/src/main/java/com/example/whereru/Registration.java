@@ -50,17 +50,21 @@ public class Registration extends AppCompatActivity {
             dbUsers.mReference.child(fAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        Log.i("DATA RE", task.getResult().getValue().toString());
-                        if(task.getResult().child("driver").getValue(Boolean.class) == true) {
-                            Toast.makeText(Registration.this, "Looged in Driver Successully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
-                        }else{
-                            Toast.makeText(Registration.this, "Looged in User Successully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    try {
+                        if (task.isSuccessful()) {
+                            Log.i("DATA RE", task.getResult().getValue().toString());
+                            if (task.getResult().child("driver").getValue(Boolean.class) == true) {
+                                Toast.makeText(Registration.this, "Looged in Driver Successully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
+                            } else {
+                                Toast.makeText(Registration.this, "Looged in User Successully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                        } else {
+                            Log.i("DATA RE", "data re failed");
                         }
-                    } else {
-                        Log.i("DATA RE", "data re failed");
+                    }catch (NullPointerException e) {
+                        e.printStackTrace();
                     }
                 }
             });
