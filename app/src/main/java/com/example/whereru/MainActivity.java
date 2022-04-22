@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity  {
 
                     mLatLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
                     Log.i("LatLon", "onChildChanged: " + mLatLng.toString());
-
+                    Toast.makeText(MainActivity.this, mLatLng.toString(), Toast.LENGTH_SHORT).show();
 
                 }
             });
