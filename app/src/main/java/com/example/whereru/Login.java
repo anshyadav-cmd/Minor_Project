@@ -43,7 +43,24 @@ public class Login extends AppCompatActivity {
         mforgotPassword = findViewById(R.id.forgotPasswordText_id);
 
         if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            DBUsers dbUsers = new DBUsers();
+            dbUsers.mReference.child(fAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        Log.i("DATA RE", task.getResult().getValue().toString());
+                        if (task.getResult().child("driver").getValue(Boolean.class) == true) {
+                            Toast.makeText(Login.this, "Looged in Driver Successully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), DriverMainActivity.class));
+                        } else {
+                            Toast.makeText(Login.this, "Looged in User Successully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }
+                    } else {
+                        Log.i("DATA RE", "data re failed");
+                    }
+                }
+            });
             finish();
         }
 

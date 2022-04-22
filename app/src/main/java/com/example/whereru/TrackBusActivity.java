@@ -12,7 +12,6 @@ public class TrackBusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_track_bus);
         setTitle("Track Bus");
 
-
     }
 
 }

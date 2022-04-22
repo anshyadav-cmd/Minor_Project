@@ -26,6 +26,8 @@ public class MapsFragment extends Fragment {
     private static final int REQUEST_LOCATION_PERMISSION = 10021;
     private GoogleMap mMap;
     private View mapView;
+
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         @Override

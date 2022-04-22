@@ -50,7 +50,6 @@ public class Registration extends AppCompatActivity {
             dbUsers.mReference.child(fAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    try {
                         if (task.isSuccessful()) {
                             Log.i("DATA RE", task.getResult().getValue().toString());
                             if (task.getResult().child("driver").getValue(Boolean.class) == true) {
@@ -63,11 +62,6 @@ public class Registration extends AppCompatActivity {
                         } else {
                             Log.i("DATA RE", "data re failed");
                         }
-                    }catch (NullPointerException e) {
-                        e.printStackTrace();
-                        fAuth.signOut();
-                        onCreate(savedInstanceState);
-                    }
                 }
             });
             finish();
