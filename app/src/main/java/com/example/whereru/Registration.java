@@ -65,6 +65,8 @@ public class Registration extends AppCompatActivity {
                         }
                     }catch (NullPointerException e) {
                         e.printStackTrace();
+                        fAuth.signOut();
+                        onCreate(savedInstanceState);
                     }
                 }
             });
