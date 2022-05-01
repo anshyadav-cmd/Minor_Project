@@ -55,6 +55,7 @@ public class DriverMainActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(DriverMainActivity.this, "Location Sharing Live", Toast.LENGTH_SHORT).show();
                 locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                     OnGPS();
@@ -73,6 +74,7 @@ public class DriverMainActivity extends AppCompatActivity {
         stopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(DriverMainActivity.this, "Location sharing Stopped", Toast.LENGTH_SHORT).show();
                 scheduler[0].shutdown();
             }
         });
